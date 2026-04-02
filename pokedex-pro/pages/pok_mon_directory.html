@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pokémon Directory - PokéDex Pro</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <meta name="description" content="Explore the complete Pokémon database with advanced filtering, search, and sorting options. Discover every Pokémon with detailed stats and information." />
+
+    <script type="module" async src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fpokdexpro1803back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.12"></script>
+    <script type="module" defer src="https://static.rocket.new/rocket-shot.js?v=0.0.1"></script>
+</head>
+<body class="bg-background text-text-primary">
+<!-- Navigation Header -->
+<nav class="bg-surface shadow-soft sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+            <!-- Logo -->
+            <div class="flex items-center">
+                <a href="homepage.html" class="flex items-center space-x-2">
+                    <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <circle cx="12" cy="8" r="3" fill="currentColor"/>
+                            <rect x="8" y="12" width="8" height="2" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <span class="font-accent text-xl text-primary">PokéDex Pro</span>
+                </a>
+            </div>
+
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="homepage.html" class="text-text-secondary hover:text-primary transition-fast">Home</a>
+                <a href="pok_mon_directory.html" class="text-primary font-semibold">Pokédex</a>
+                <a href="battle_tools.html" class="text-text-secondary hover:text-primary transition-fast">Battle Tools</a>
+                <a href="about.html" class="text-text-secondary hover:text-primary transition-fast">About</a>
+            </div>
+
+            <!-- Search Bar -->
+            <div class="hidden md:flex items-center">
+                <div class="relative">
+                    <input type="text" placeholder="Search Pokémon..." class="input-field w-64 pl-10" />
+                    <svg class="w-5 h-5 text-text-secondary absolute left-3 top-1/2 transform -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden">
+                <button class="text-text-secondary hover:text-primary">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Page Header -->
+<section class="bg-surface border-b border-border py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+            <div>
+                <h1 class="text-3xl font-bold mb-2">Pokémon Directory</h1>
+                <p class="text-text-secondary">Explore the complete database of all Pokémon with advanced filtering and search capabilities</p>
+            </div>
+            <div class="mt-4 md:mt-0 flex items-center space-x-4">
+                <!-- View Toggle -->
+                <div class="flex items-center bg-background rounded-lg p-1">
+                    <button class="p-2 bg-primary text-white rounded-md">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/>
+                        </svg>
+                    </button>
+                    <button class="p-2 text-text-secondary hover:text-primary transition-fast">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+                <!-- Sort Dropdown -->
+                <div class="relative">
+                    <button class="flex items-center space-x-2 bg-background px-4 py-2 rounded-lg border border-border hover:border-primary transition-fast">
+                        <span class="text-sm">Sort by: Pokédex #</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Main Content -->
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="flex flex-col lg:flex-row gap-8">
+        <!-- Sidebar Filters -->
+        <aside class="lg:w-80 space-y-6">
+            <!-- Quick Stats Panel -->
+            <div class="card">
+                <h3 class="font-semibold mb-4">Database Stats</h3>
+                <div class="space-y-3">
+                    <div class="flex justify-between items-center">
+                        <span class="text-text-secondary">Total Pokémon</span>
+                        <span class="font-semibold text-primary">1,010</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-text-secondary">Generations</span>
+                        <span class="font-semibold">9</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-text-secondary">Types</span>
+                        <span class="font-semibold">18</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-text-secondary">Showing Results</span>
+                        <span class="font-semibold text-accent">150</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Generation Filter -->
+            <div class="card">
+                <h3 class="font-semibold mb-4">Generation</h3>
+                <div class="grid grid-cols-3 gap-2">
+                    <button class="status-badge bg-primary-100 text-primary-600 hover:bg-primary-200 transition-fast">Gen I</button>
+                    <button class="status-badge bg-gray-100 text-gray-600 hover:bg-gray-200 transition-fast">Gen II</button>
+                    <button class="status-badge bg-gray-100 text-gray-600 hover:bg-gray-200 transition-fast">Gen III</button>
+                    <button class="status-badge bg-gray-100 text-gray-600 hover:bg-gray-200 transition-fast">Gen IV</button>
+                    <button class="status-badge bg-gray-100 text-gray-600 hover:bg-gray-200 transition-fast">Gen V</button>
+                    <button class="status-badge bg-gray-100 text-gray-600 hover:bg-gray-200 transition-fast">Gen VI</button>
+                    <button class="status-badge bg-gray-100 text-gray-600 hover:bg-gray-200 transition-fast">Gen VII</button>
+                    <button class="status-badge bg-gray-100 text-gray-600 hover:bg-gray-200 transition-fast">Gen VIII</button>
+                    <button class="status-badge bg-gray-100 text-gray-600 hover:bg-gray-200 transition-fast">Gen IX</button>
+                </div>
+            </div>
+
+            <!-- Type Filter -->
+            <div class="card">
+                <h3 class="font-semibold mb-4">Type</h3>
+                <div class="grid grid-cols-2 gap-2">
+                    <button class="flex items-center space-x-2 p-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-fast">
+                        <div class="w-4 h-4 bg-red-500 rounded-full"></div>
+                        <span class="text-sm">Fire</span>
+                    </button>
+                    <button class="flex items-center space-x-2 p-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-fast">
+                        <div class="w-4 h-4 bg-blue-500 rounded-full"></div>
+                        <span class="text-sm">Water</span>
+                    </button>
+                    <button class="flex items-center space-x-2 p-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-fast">
+                        <div class="w-4 h-4 bg-green-500 rounded-full"></div>
+                        <span class="text-sm">Grass</span>
+                    </button>
+                    <button class="flex items-center space-x-2 p-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-fast">
+                        <div class="w-4 h-4 bg-yellow-500 rounded-full"></div>
+                        <span class="text-sm">Electric</span>
+                    </button>
+                    <button class="flex items-center space-x-2 p-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-fast">
+                        <div class="w-4 h-4 bg-purple-500 rounded-full"></div>
+                        <span class="text-sm">Psychic</span>
+                    </button>
+                    <button class="flex items-center space-x-2 p-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-fast">
+                        <div class="w-4 h-4 bg-pink-500 rounded-full"></div>
+                        <span class="text-sm">Fairy</span>
+                    </button>
+                </div>
+                <button class="text-primary text-sm mt-2 hover:text-primary-600 transition-fast">Show all types →</button>
+            </div>
+
+            <!-- Evolution Stage Filter -->
+            <div class="card">
+                <h3 class="font-semibold mb-4">Evolution Stage</h3>
+                <div class="space-y-2">
+                    <label class="flex items-center space-x-3">
+                        <input type="checkbox" class="rounded border-gray-300 text-primary focus:ring-primary" />
+                        <span class="text-sm">Basic Pokémon</span>
+                    </label>
+                    <label class="flex items-center space-x-3">
+                        <input type="checkbox" class="rounded border-gray-300 text-primary focus:ring-primary" />
+                        <span class="text-sm">Stage 1 Evolution</span>
+                    </label>
+                    <label class="flex items-center space-x-3">
+                        <input type="checkbox" class="rounded border-gray-300 text-primary focus:ring-primary" />
+                        <span class="text-sm">Stage 2 Evolution</span>
+                    </label>
+                    <label class="flex items-center space-x-3">
+                        <input type="checkbox" class="rounded border-gray-300 text-primary focus:ring-primary" />
+                        <span class="text-sm">Legendary</span>
+                    </label>
+                    <label class="flex items-center space-x-3">
+                        <input type="checkbox" class="rounded border-gray-300 text-primary focus:ring-primary" />
+                        <span class="text-sm">Mythical</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Battle Stats Filter -->
+            <div class="card">
+                <h3 class="font-semibold mb-4">Battle Stats</h3>
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Base Stat Total</label>
+                        <div class="flex items-center space-x-2">
+                            <input type="range" min="200" max="800" value="400" class="flex-1" />
+                            <span class="text-sm text-text-secondary">400+</span>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-2">HP Range</label>
+                        <div class="flex items-center space-x-2">
+                            <input type="range" min="1" max="255" value="50" class="flex-1" />
+                            <span class="text-sm text-text-secondary">50+</span>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Speed Range</label>
+                        <div class="flex items-center space-x-2">
+                            <input type="range" min="1" max="200" value="60" class="flex-1" />
+                            <span class="text-sm text-text-secondary">60+</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Clear Filters -->
+            <button class="w-full btn-secondary">
+                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+                </svg>
+                Clear All Filters
+            </button>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="flex-1">
+            <!-- Active Filters -->
+            <div class="mb-6">
+                <div class="flex flex-wrap items-center gap-2">
+                    <span class="text-sm text-text-secondary">Active filters:</span>
+                    <div class="flex items-center space-x-1 bg-primary-100 text-primary-600 px-3 py-1 rounded-full text-sm">
+                        <span>Generation I</span>
+                        <button class="ml-1 hover:text-primary-800">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Search Results Header -->
+            <div class="flex items-center justify-between mb-6">
+                <h2 class="text-xl font-semibold">Showing 150 Pokémon</h2>
+                <div class="flex items-center space-x-4">
+                    <span class="text-sm text-text-secondary">Results per page:</span>
+                    <select class="input-field w-20 py-2">
+                        <option>24</option>
+                        <option>48</option>
+                        <option>96</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Pokémon Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <!-- Pokémon Card 1 - Bulbasaur -->
+                <div class="pokemon-card group">
+                    <div class="relative">
+                        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png" alt="Bulbasaur" class="w-full h-48 object-contain bg-gradient-to-br from-green-50 to-blue-50 p-4 hover:scale-105 transition-transform duration-300" onerror="this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png'; this.onerror=function(){this.src='https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3'}" loading="lazy" />
+                        <div class="absolute top-2 right-2 bg-white rounded-full p-1 opacity-0 group-hover:opacity-100 transition-fast">
+                            <svg class="w-5 h-5 text-gray-600 hover:text-red-500 cursor-pointer" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                            </svg>
+                        </div>
+                        <div class="absolute top-2 left-2 status-badge bg-success-100 text-success-600">#001</div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-lg mb-2">Bulbasaur</h3>
+                        <div class="flex items-center space-x-2 mb-3">
+                            <span class="status-badge bg-green-100 text-green-600">Grass</span>
+                            <span class="status-badge bg-purple-100 text-purple-600">Poison</span>
+                        </div>
+                        <div class="grid grid-cols-3 gap-2 text-sm mb-4">
+                            <div class="text-center">
+                                <div class="font-semibold text-primary">45</div>
+                                <div class="text-text-secondary">HP</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="font-semibold text-secondary">49</div>
+                                <div class="text-text-secondary">ATK</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="font-semibold text-accent">45</div>
+                                <div class="text-text-secondary">SPD</div>
+                            </div>
+                        </div>
+                        <!-- Hidden details shown on hover -->
+                        <div class="opacity-0 group-hover:opacity-100 transition-fast">
+                            <div class="text-sm text-text-secondary mb-2">
+                                <span>Height: 0.7m</span> • <span>Weight: 6.9kg</span>
+                            </div>
+                            <div class="text-sm text-text-secondary mb-3">
+                                <strong>Ability:</strong> Overgrow
+                            </div>
+                        </div>
+                        <a href="individual_pok_mon_profile.html" class="block w-full text-center bg-primary text-white py-2 rounded-lg hover:bg-primary-600 transition-fast">
+                            View Details
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Pokémon Card 2 - Charmander -->
+                <div class="pokemon-card group">
+                    <div class="relative">
+                        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png" alt="Charmander" class="w-full h-48 object-contain bg-gradient-to-br from-red-50 to-orange-50 p-4 hover:scale-105 transition-transform duration-300" onerror="this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png'; this.onerror=function(){this.src='https://images.pexels.com/photos/1310847/pexels-photo-1310847.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'}" loading="lazy" />
+                        <div class="absolute top-2 right-2 bg-white rounded-full p-1 opacity-0 group-hover:opacity-100 transition-fast">
+                            <svg class="w-5 h-5 text-gray-600 hover:text-red-500 cursor-pointer" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                            </svg>
+                        </div>
+                        <div class="absolute top-2 left-2 status-badge bg-success-100 text-success-600">#004</div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-lg mb-2">Charmander</h3>
+                        <div class="flex items-center space-x-2 mb-3">
+                            <span class="status-badge bg-red-100 text-red-600">Fire</span>
+                        </div>
+                        <div class="grid grid-cols-3 gap-2 text-sm mb-4">
+                            <div class="text-center">
+                                <div class="font-semibold text-primary">39</div>
+                                <div class="text-text-secondary">HP</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="font-semibold text-secondary">52</div>
+                                <div class="text-text-secondary">ATK</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="font-semibold text-accent">65</div>
+                                <div class="text-text-secondary">SPD</div>
+                            </div>
+                        </div>
+                        <!-- Hidden details shown on hover -->
+                        <div class="opacity-0 group-hover:opacity-100 transition-fast">
+                            <div class="text-sm text-text-secondary mb-2">
+                                <span>Height: 0.6m</span> • <span>Weight: 8.5kg</span>
+                            </div>
+                            <div class="text-sm text-text-secondary mb-3">
+                                <strong>Ability:</strong> Blaze
+                            </div>
+                        </div>
+                        <a href="individual_pok_mon_profile.html" class="block w-full text-center bg-primary text-white py-2 rounded-lg hover:bg-primary-600 transition-fast">
+                            View Details
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Pokémon Card 3 - Squirtle -->
+                <div class="pokemon-card group">
+                    <div class="relative">
+                        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/7.png" alt="Squirtle" class="w-full h-48 object-contain bg-gradient-to-br from-blue-50 to-cyan-50 p-4 hover:scale-105 transition-transform duration-300" onerror="this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png'; this.onerror=function(){this.src='https://images.pixabay.com/photo/2016/07/23/13/18/pokemon-1536849_1280.jpg'}" loading="lazy" />
+                        <div class="absolute top-2 right-2 bg-white rounded-full p-1 opacity-0 group-hover:opacity-100 transition-fast">
+                            <svg class="w-5 h-5 text-red-500 cursor-pointer" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                            </svg>
+                        </div>
+                        <div class="absolute top-2 left-2 status-badge bg-success-100 text-success-600">#007</div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-lg mb-2">Squirtle</h3>
+                        <div class="flex items-center space-x-2 mb-3">
+                            <span class="status-badge bg-blue-100 text-blue-600">Water</span>
+                        </div>
+                        <div class="grid grid-cols-3 gap-2 text-sm mb-4">
+                            <div class="text-center">
+                                <div class="font-semibold text-primary">44</div>
+                                <div class="text-text-secondary">HP</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="font-semibold text-secondary">48</div>
+                                <div class="text-text-secondary">ATK</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="font-semibold text-accent">43</div>
+                                <div class="text-text-secondary">SPD</div>
+                            </div>
+                        </div>
+                        <!-- Hidden details shown on hover -->
+                        <div class="opacity-0 group-hover:opacity-100 transition-fast">
+                            <div class="text-sm text-text-secondary mb-2">
+                                <span>Height: 0.5m</span> • <span>Weight: 9.0kg</span>
+                            </div>
+                            <div class="text-sm text-text-secondary mb-3">
+                                <strong>Ability:</strong> Torrent
+                            </div>
+                        </div>
+                        <a href="individual_pok_mon_profile.html" class="block w-full text-center bg-primary text-white py-2 rounded-lg hover:bg-primary-600 transition-fast">
+                            View Details
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Pokémon Card 4 - Pikachu -->
+                <div class="pokemon-card group">
+                    <div class="relative">
+                        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png" alt="Pikachu" class="w-full h-48 object-contain bg-gradient-to-br from-yellow-50 to-amber-50 p-4 hover:scale-105 transition-transform duration-300" onerror="this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png'; this.onerror=function(){this.src='https://images.unsplash.com/photo-1578662996442-48f60103fc96?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3'}" loading="lazy" />
+                        <div class="absolute top-2 right-2 bg-white rounded-full p-1 opacity-0 group-hover:opacity-100 transition-fast">
+                            <svg class="w-5 h-5 text-gray-600 hover:text-red-500 cursor-pointer" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                            </svg>
+                        </div>
+                        <div class="absolute top-2 left-2 status-badge bg-success-100 text-success-600">#025</div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-lg mb-2">Pikachu</h3>
+                        <div class="flex items-center space-x-2 mb-3">
+                            <span class="status-badge bg-yellow-100 text-yellow-600">Electric</span>
+                        </div>
+                        <div class="grid grid-cols-3 gap-2 text-sm mb-4">
+                            <div class="text-center">
+                                <div class="font-semibold text-primary">35</div>
+                                <div class="text-text-secondary">HP</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="font-semibold text-secondary">55</div>
+                                <div class="text-text-secondary">ATK</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="font-semibold text-accent">90</div>
+                                <div class="text-text-secondary">SPD</div>
+                            </div>
+                        </div>
+                        <!-- Hidden details shown on hover -->
+                        <div class="opacity-0 group-hover:opacity-100 transition-fast">
+                            <div class="text-sm text-text-secondary mb-2">
+                                <span>Height: 0.4m</span> • <span>Weight: 6.0kg</span>
+                            </div>
+                            <div class="text-sm text-text-secondary mb-3">
+                                <strong>Ability:</strong> Static
+                            </div>
+                        </div>
+                        <a href="individual_pok_mon_profile.html" class="block w-full text-center bg-primary text-white py-2 rounded-lg hover:bg-primary-600 transition-fast">
+                            View Details
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Pokémon Card 5 - Eevee -->
+                <div class="pokemon-card group">
+                    <div class="relative">
+                        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/133.png" alt="Eevee" class="w-full h-48 object-contain bg-gradient-to-br from-amber-50 to-orange-50 p-4 hover:scale-105 transition-transform duration-300" onerror="this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/133.png'; this.onerror=function(){this.src='https://images.pexels.com/photos/1310847/pexels-photo-1310847.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'}" loading="lazy" />
+                        <div class="absolute top-2 right-2 bg-white rounded-full p-1 opacity-0 group-hover:opacity-100 transition-fast">
+                            <svg class="w-5 h-5 text-gray-600 hover:text-red-500 cursor-pointer" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                            </svg>
+                        </div>
+                        <div class="absolute top-2 left-2 status-badge bg-success-100 text-success-600">#133</div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-lg mb-2">Eevee</h3>
+                        <div class="flex items-center space-x-2 mb-3">
+                            <span class="status-badge bg-gray-100 text-gray-600">Normal</span>
+                        </div>
+                        <div class="grid grid-cols-3 gap-2 text-sm mb-4">
+                            <div class="text-center">
+                                <div class="font-semibold text-primary">55</div>
+                                <div class="text-text-secondary">HP</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="font-semibold text-secondary">55</div>
+                                <div class="text-text-secondary">ATK</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="font-semibold text-accent">55</div>
+                                <div class="text-text-secondary">SPD</div>
+                            </div>
+                        </div>
+                        <!-- Hidden details shown on hover -->
+                        <div class="opacity-0 group-hover:opacity-100 transition-fast">
+                            <div class="text-sm text-text-secondary mb-2">
+                                <span>Height: 0.3m</span> • <span>Weight: 6.5kg</span>
+                            </div>
+                            <div class="text-sm text-text-secondary mb-3">
+                                <strong>Ability:</strong> Adaptability
+                            </div>
+                        </div>
+                        <a href="individual_pok_mon_profile.html" class="block w-full text-center bg-primary text-white py-2 rounded-lg hover:bg-primary-600 transition-fast">
+                            View Details
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Pokémon Card 6 - Mewtwo -->
+                <div class="pokemon-card group">
+                    <div class="relative">
+                        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/150.png" alt="Mewtwo" class="w-full h-48 object-contain bg-gradient-to-br from-purple-50 to-pink-50 p-4 hover:scale-105 transition-transform duration-300" onerror="this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/150.png'; this.onerror=function(){this.src='https://images.pixabay.com/photo/2016/07/23/13/18/pokemon-1536849_1280.jpg'}" loading="lazy" />
+                        <div class="absolute top-2 right-2 bg-white rounded-full p-1 opacity-0 group-hover:opacity-100 transition-fast">
+                            <svg class="w-5 h-5 text-gray-600 hover:text-red-500 cursor-pointer" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                            </svg>
+                        </div>
+                        <div class="absolute top-2 left-2 status-badge bg-accent-100 text-accent-600">#150</div>
+                        <div class="absolute bottom-2 left-2 status-badge bg-purple-100 text-purple-600">Legendary</div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-lg mb-2">Mewtwo</h3>
+                        <div class="flex items-center space-x-2 mb-3">
+                            <span class="status-badge bg-purple-100 text-purple-600">Psychic</span>
+                        </div>
+                        <div class="grid grid-cols-3 gap-2 text-sm mb-4">
+                            <div class="text-center">
+                                <div class="font-semibold text-primary">106</div>
+                                <div class="text-text-secondary">HP</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="font-semibold text-secondary">110</div>
+                                <div class="text-text-secondary">ATK</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="font-semibold text-accent">130</div>
+                                <div class="text-text-secondary">SPD</div>
+                            </div>
+                        </div>
+                        <!-- Hidden details shown on hover -->
+                        <div class="opacity-0 group-hover:opacity-100 transition-fast">
+                            <div class="text-sm text-text-secondary mb-2">
+                                <span>Height: 2.0m</span> • <span>Weight: 122.0kg</span>
+                            </div>
+                            <div class="text-sm text-text-secondary mb-3">
+                                <strong>Ability:</strong> Pressure
+                            </div>
+                        </div>
+                        <a href="individual_pok_mon_profile.html" class="block w-full text-center bg-primary text-white py-2 rounded-lg hover:bg-primary-600 transition-fast">
+                            View Details
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Loading Skeleton Cards -->
+                <div class="pokemon-card animate-pulse">
+                    <div class="bg-gray-200 h-48 w-full"></div>
+                    <div class="p-4">
+                        <div class="bg-gray-200 h-6 w-3/4 mb-2 rounded"></div>
+                        <div class="flex space-x-2 mb-3">
+                            <div class="bg-gray-200 h-6 w-16 rounded-full"></div>
+                            <div class="bg-gray-200 h-6 w-16 rounded-full"></div>
+                        </div>
+                        <div class="grid grid-cols-3 gap-2 mb-4">
+                            <div class="bg-gray-200 h-8 rounded"></div>
+                            <div class="bg-gray-200 h-8 rounded"></div>
+                            <div class="bg-gray-200 h-8 rounded"></div>
+                        </div>
+                        <div class="bg-gray-200 h-10 w-full rounded-lg"></div>
+                    </div>
+                </div>
+
+                <div class="pokemon-card animate-pulse">
+                    <div class="bg-gray-200 h-48 w-full"></div>
+                    <div class="p-4">
+                        <div class="bg-gray-200 h-6 w-3/4 mb-2 rounded"></div>
+                        <div class="flex space-x-2 mb-3">
+                            <div class="bg-gray-200 h-6 w-16 rounded-full"></div>
+                        </div>
+                        <div class="grid grid-cols-3 gap-2 mb-4">
+                            <div class="bg-gray-200 h-8 rounded"></div>
+                            <div class="bg-gray-200 h-8 rounded"></div>
+                            <div class="bg-gray-200 h-8 rounded"></div>
+                        </div>
+                        <div class="bg-gray-200 h-10 w-full rounded-lg"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Load More Button -->
+            <div class="text-center mt-12">
+                <button class="btn-primary">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+                    </svg>
+                    Load More Pokémon
+                </button>
+                <p class="text-text-secondary text-sm mt-2">Showing 24 of 150 results</p>
+            </div>
+        </main>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="bg-text-primary text-white py-12 mt-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-4 gap-8">
+            <!-- Logo and Description -->
+            <div class="md:col-span-2">
+                <div class="flex items-center space-x-2 mb-4">
+                    <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <circle cx="12" cy="8" r="3" fill="currentColor"/>
+                            <rect x="8" y="12" width="8" height="2" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <span class="font-accent text-xl">PokéDex Pro</span>
+                </div>
+                <p class="text-gray-300 mb-4 max-w-md">Your ultimate digital companion for Pokémon discovery and team building. Catch them all, digitally.</p>
+                <div class="flex space-x-4">
+                    <a href="javascript:void(0)" class="text-gray-300 hover:text-white transition-fast">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 2.14-2.23-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 24.009 12.017 24.009c6.624 0 11.99-5.367 11.99-11.988C24.007 5.367 18.641.001.012.001z"/>
+                        </svg>
+                    </a>
+                    <a href="javascript:void(0)" class="text-gray-300 hover:text-white transition-fast">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 2.14-2.23-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/>
+                        </svg>
+                    </a>
+                    <a href="javascript:void(0)" class="text-gray-300 hover:text-white transition-fast">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 2.14-2.23-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div>
+                <h4 class="font-semibold mb-4">Quick Links</h4>
+                <ul class="space-y-2">
+                    <li><a href="pok_mon_directory.html" class="text-gray-300 hover:text-white transition-fast">Pokédex</a></li>
+                    <li><a href="battle_tools.html" class="text-gray-300 hover:text-white transition-fast">Team Builder</a></li>
+                    <li><a href="javascript:void(0)" class="text-gray-300 hover:text-white transition-fast">Type Chart</a></li>
+                    <li><a href="javascript:void(0)" class="text-gray-300 hover:text-white transition-fast">Random Pokémon</a></li>
+                </ul>
+            </div>
+
+            <!-- Support -->
+            <div>
+                <h4 class="font-semibold mb-4">Support</h4>
+                <ul class="space-y-2">
+                    <li><a href="about.html" class="text-gray-300 hover:text-white transition-fast">About Us</a></li>
+                    <li><a href="javascript:void(0)" class="text-gray-300 hover:text-white transition-fast">Contact</a></li>
+                    <li><a href="javascript:void(0)" class="text-gray-300 hover:text-white transition-fast">Privacy Policy</a></li>
+                    <li><a href="javascript:void(0)" class="text-gray-300 hover:text-white transition-fast">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+            <p class="text-gray-300">© 2025 PokéDex Pro. All Rights Reserved. | Pokémon and all related characters are trademarks of Nintendo.</p>
+        </div>
+    </div>
+</footer>
+<script id="dhws-dataInjector" src="../public/dhws-data-injector.js"></script>
+</body>
+</html>
