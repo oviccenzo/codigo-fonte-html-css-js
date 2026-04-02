@@ -1,0 +1,44 @@
+body{
+    background-color: green;
+    color : white;
+    font-family: 'Comic Sans MS', sans-serif;
+    font-size: 190%;
+    line-height : 1.5;
+}
+
+img{
+    width: 250px;
+    height: auto;
+    justify-content: 100px;
+    flex-direction: row;
+}
+
+h1{
+    font-weight: normal;
+    display: flex;
+    flex-direction: row;
+}
+
+p{
+    color: rebeccapurple;
+    flex-direction: row;
+}
+
+span{
+      /*span marcar a cor do texto*/
+    padding: 2px;
+    flex-direction: row;
+
+}
+
+.apresentacao {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+*{
+    border: 2px;
+    margin: 2px;
+    padding: 10px;
+}
