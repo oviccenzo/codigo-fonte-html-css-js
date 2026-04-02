@@ -1,0 +1,26 @@
+body{
+
+    background-color: cadetblue;
+    color: red;
+    font-family: 'Comic Sans MS' ,'sans-serif';
+    font-size: 200%;
+    line-height: 1.5;
+}
+
+/* imagem usado para mudar o tamanho da imagem*/
+img{
+    width: 100px;
+    height: auto;
+}
+
+/* span pode mudar a cor do meio do texto*/
+span{
+    color: white;
+    padding: unset;
+}
+
+*{
+    margin: 0;
+    border: 0;
+    padding: 0;
+}
