@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sequencia de Fibonacci</title>
+    <script>
+        function gerarFibonacci(){
+            var limite = document.getElementById("limite").value;
+            var resultado = document.getElementById("resultado");
+            resultado.innerHTML = ""; //Limpa qualquer resultado anterior
+
+            var a = 0, b = 1, nextTerm;
+
+            while(a <= limite){
+                var newElement = document.createElement("span");
+                newElement.textContent = a + " ";
+
+                resultado.appendChild(newElement);
+
+                nextTerm = a + b;
+                a = b;
+                b = nextTerm;
+            }
+        }
+    </script>
+</head>
+<body>
+
+<h2>Sequencia de Fibonacci</h2>
+
+<label for="limite">Gerar até o número:</label>
+<input type="number" id="limite" aria-placeholder="Insira o limite "><br><br>
+
+<button onclick="gerarFibonacci">Gerar Sequência</button><br><br>
+
+<div id="resultado">
+    <!-- Aqui sera exibido a sequencia de Fibonacci -->
+</div>
+
+</body>
+</html>

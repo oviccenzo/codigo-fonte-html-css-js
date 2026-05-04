@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Distância entre Ituiutaba e Brasília</title>
+    <script>
+        function calcularDistancia() {
+            var origem = "Ituiutaba";
+            var destino = "Brasília";
+
+            var service = new google.maps.DistanceMatrixService();
+            service.getDistanceMatrix(
+                {
+                    origins: [origem],
+                    destinations: [destino],
+                    travelMode: 'DRIVING',
+                    unitSystem: google.maps.UnitSystem.METRIC
+                },
+                callback
+            );
+        }
+
+        function callback(response, status) {
+            if (status == 'OK') {
+                var resultado = response.rows[0].elements[0];
+                var distancia = resultado.distance.text;
+                var duracao = resultado.duration.text;
+
+                document.getElementById('resultado').innerHTML = `Distância: ${distancia}<br>Duração estimada: ${duracao}`;
+            } else {
+                document.getElementById('resultado').innerHTML = 'Erro ao calcular a distância.';
+            }
+        }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=SUA_CHAVE_DA_API&callback=initMap" async defer></script>
+</head>
+<body>
+
+<h2>Distância entre Ituiutaba e Brasília</h2>
+
+<button onclick="calcularDistancia()">Calcular</button><br><br>
+
+<div id="resultado">
+    <!-- Aqui será exibida a distância e a duração estimada -->
+</div>
+
+</body>
+</html>
