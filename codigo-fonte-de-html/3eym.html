@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta nmae="viewport" content="width=device-width , initial-scale=1.0">
+        <title>Calculadora de Área de Círculos</title>
+    </head>
+    <body>
+
+        <h1>Calculadora de Área de Círculos</h1>
+
+        <form id="circulo-form">
+            <label for="raio">Digite o raio do círculo (em unidades):</label>
+            <input type="number" id="raio" name="raio" step="any" required>
+            <button type="submit">Calcular Área</button>
+        </form>
+
+        <div id="circulo-form"></div>
+
+        <script>
+            document.getElementById('circulo-form').addEventListener('submit', function(event){
+                event.preventDefault(); // Evita o envio do formulário por padrão
+
+                var raio = parseFloat(document.getElementById('raio').value);
+                var area;
+
+                if(raio > 0){
+                    //Calculo a área do círculo
+                    area = Math
+                }
+            });
+        </script>
+    </body>
+</html> 
