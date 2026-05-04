@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Conversor de Temperatura</title>
+</head>
+<body>
+    <input type="number" id="inputTemperatura">
+    <select id="selectUnidade">
+        <option value="celsius">Celsius</option>
+        <option value="fahrenheit">Fahrenheit</option>
+    </select>
+    <button id="botaoConverter">Converter</button>
+    <p id="resultado"></p>
+
+    <script>
+        const inputTemperatura = document.querySelector("#inputTemperatura");
+        const selectUnidade = document.querySelector("#selecetUnidade");
+        const botaoConverter = document.querySelector("#botaoConverter");
+        const resultado = document.querySelector("#resultado");
+
+        botaoConverter.onclick = function(){
+            const temperatura = parseFloat(inputTemperatura.value);
+            const unidade = selectUnidade.value;
+            
+            if (unidade == "celsius"){
+                const temperaturaConvertida = (temperatura * 9/5) + 32;
+                resultado.textContent
+            }
+        }
+    </script>
+</body>
+</html>
