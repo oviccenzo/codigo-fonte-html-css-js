@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Quem é esse Pokémon?</title>
+    <!-- O seu arquivo CSS deve estar linkado aqui -->
+    <link rel="stylesheet" href="style.css"> 
+</head>
+<body>
+
+    <h1>Quem é esse Pokémon?</h1>
+
+    <div class="images-container">
+        <!-- Adicionei o ID pokemon-image aqui -->
+        <img id="pokemon-image" src="" alt="Pokémon Silhueta">
+    </div>
+
+    <div class="input-container">
+        <!-- Adicionei o ID pokemon-input -->
+        <input type="text" id="pokemon-input" placeholder="Nome do Pokémon" autocomplete="off">
+        
+        <!-- Adicionei o ID submit-button -->
+        <button id="submit-button">Enviar</button>
+    </div>
+
+    <!-- O botão Next com o ID que você usou no CSS -->
+    <button id="next-btn" disabled>Próximo Pokémon</button>
+
+    <!-- Elemento para mostrar se acertou ou errou -->
+    <p id="feedback"></p>
+
+    <!-- O seu arquivo JS deve estar linkado aqui -->
+    <script src="script.js"></script>
+</body>
+</html>
